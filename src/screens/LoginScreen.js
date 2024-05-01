@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, updateDoc,getDoc,doc } from 'firebase/firestore';
 import { db } from './firebase.js';
 
 const LoginScreen = ({ navigation }) => {
@@ -8,6 +8,44 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
+function getAlldata() {
+  getDocs(collection(db, "users")).then((docSnap) => {
+    let users = [];
+    docSnap.forEach((doc) => {
+      users.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(users);
+  });
+}
+
+function update(){
+  updateDoc(doc(db, "users", "1Ex4p8oa72BDXitBeKXr"),{
+    password:password,
+    email:email,
+
+  }).then(()=>{
+    console.log('data updated');
+  }).catch((err)=>{
+    console.log(err);
+  })
+}
+
+
+const getDatawithID = () => {
+  getDoc(doc(db, "users", "1Ex4p8oa72BDXitBeKXr"))
+    .then((docData) => {
+      console.log(docData);
+      if (docData.exists()) {
+        setPassword(docData.data().password);
+        setEmail(docData.data().email);
+      } else {
+        console.log("no such data exists");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
   const signIn = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "users"));

@@ -13,8 +13,8 @@ const LabMidExam = ({ navigation }) => {
       try {
         const response = await yelp.get("/search", {
           params: {
-            limit: 5,
-            location: "New York",
+            limit: 50,
+            location: "Melbourne",
             sort_by: "distance",
           },
         });
@@ -31,9 +31,10 @@ const LabMidExam = ({ navigation }) => {
   useEffect(() => {
     const fetchWeather = async () => {
       try {
-        const city = "New York"; 
+        const city = "Melbourne"; 
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5b85388ae53b92e46291683ac01b16e7`);
         setWeather(response.data);
+        console.log(response.data)
       } catch (error) {
         console.error("Error fetching weather data:", error);
       }
@@ -44,8 +45,13 @@ const LabMidExam = ({ navigation }) => {
 
   const filterRestaurants = () => {
     if (!weather) return results;
-    if (weather.weather[0].main === "Rain") {
-      return results.sort((a, b) => b.price.length - a.price.length);
+    if (weather.weather[0].main === "Clouds") {
+      return results.sort((a, b) => {
+        const bprice = b.price ? b.price.length : 0;
+        const aprice = a.price ? a.price.length : 0;
+
+        return bprice - aprice;
+      });
     } else {
       return results;
     }
