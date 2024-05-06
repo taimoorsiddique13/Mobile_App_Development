@@ -56,7 +56,7 @@ const getDatawithID = () => {
           setError(null); 
           setEmail(''); 
           setPassword(''); 
-          navigation.navigate('Landing Screen');
+          navigation.navigate('Landing Screen1',{email});
           return; 
         } else {
           setError("Incorrect email or password");
@@ -90,7 +90,7 @@ const getDatawithID = () => {
       <TouchableOpacity onPress={signIn} style={styles.submitButton}>
         <Text style={styles.submitText}>Sign In</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp Screen')} style={styles.signupButton}>
+      <TouchableOpacity onPress={() => navigation.navigate('LabAssignment3')} style={styles.signupButton}>
         <Text style={styles.signupText}>Sign Up</Text>
       </TouchableOpacity>
     </View>

@@ -17,6 +17,13 @@ import RestaurantDetailScreen from "./src/screens/RestaurantDetailScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import LandingScreen from "./src/screens/LandingScreen";
+import LabAssignment3 from"./src/screens/LabAssignment3";
+import LandingScreen1 from "./src/screens/LandingScreen1";
+import EditPasswordScreen from "./src/screens/EditPasswordScreen";
+import AddInfoScreen from "./src/screens/AddInfoScreen";
+import UserSearchScreen from "./src/screens/UserSearchScreen";
+import UserDetailsScreen from "./src/screens/UserDetailsScreen";
+import DeleteStudentScreen from "./src/screens/DeleteStudentScreen";
 
 const Stack=createNativeStackNavigator();
 
@@ -42,8 +49,13 @@ export default function App(){
                   <Stack.Screen name="SignUp Screen" component={SignupScreen} />
                   <Stack.Screen name="Login Screen" component={LoginScreen} />
                   <Stack.Screen name="Landing Screen" component={LandingScreen} />
-
-
+                  <Stack.Screen name="LabAssignment3" component={LabAssignment3}/>
+                  <Stack.Screen name="Landing Screen1" component={LandingScreen1} />
+                  <Stack.Screen name="EditPasswordScreen" component={EditPasswordScreen} />
+                  <Stack.Screen name="AddInfoScreen" component={AddInfoScreen} />
+                  <Stack.Screen name="UserSearchScreen" component={UserSearchScreen} />
+                  <Stack.Screen name="UserDetailsScreen" component={UserDetailsScreen} />
+                  <Stack.Screen name="DeleteStudentScreen" component={DeleteStudentScreen} />
                   
                   </Stack.Navigator>
                 </NavigationContainer>

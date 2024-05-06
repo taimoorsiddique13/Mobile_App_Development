@@ -5,112 +5,81 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert
+  Alert,
 } from "react-native";
 import { db } from "./firebase.js";
 import {
   collection,
   setDoc,
   doc,
+  addDoc,
   getDocs,
   query,
   where,
 } from "firebase/firestore";
 
-const SignUpScreen = ({ navigation }) => {
-  const [rollNumber, setRollNumber] = useState("");
-  const [name, setName] = useState("");
+const LabAssignment3 = ({ navigation }) => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const signUp = async () => {
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
-      return;
-    }
-
-    const rollNumberExists = await checkIfRollNumberExists(rollNumber);
-    if (rollNumberExists) {
-      console.log("Roll number already exists");
+      Alert.alert("Passwords do not match");
       return;
     }
 
     const emailExists = await checkIfEmailExists(email);
     if (emailExists) {
-      console.log("Email address already exists");
+      Alert.alert("Email address already exists");
       return;
     }
 
     try {
-      await setDoc(doc(collection(db, "users")), {
-        rollNumber: rollNumber,
-        name: name,
-        email: email,
-        password: password,
+      
+      const newUserRef = await addDoc(collection(db, "users"), {
+        email,
+        password,
       });
+
       console.log("User signed up successfully");
-      setRollNumber("");
-      setName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      
+ 
+      navigation.navigate("Landing Screen1",{email});
+
     } catch (error) {
       console.log("Error signing up:", error);
+      Alert.alert("Error signing up. Please try again later.");
     }
   };
 
-const checkIfRollNumberExists = async (rollNumber) => {
-  try {
-    const rollNumberQuery = query(
-      collection(db, "users"),
-      where("rollNumber", "==", rollNumber)
-    );
-    const rollNumberSnapshot = await getDocs(rollNumberQuery);
-    if (!rollNumberSnapshot.empty) {
-      Alert.alert('Roll number already exists');
-      return true;
-    }
-    return false;
-  } catch (error) {
-    console.log("Error checking roll number:", error);
-    return false;
-  }
-};
 
-const checkIfEmailExists = async (email) => {
-  try {
-    const emailQuery = query(
-      collection(db, "users"),
-      where("email", "==", email)
-    );
-    const emailSnapshot = await getDocs(emailQuery);
-    if (!emailSnapshot.empty) {
-      Alert.alert('Email address already exists');
-      return true;
+  const checkIfEmailExists = async (email) => {
+    try {
+      const emailQuery = query(
+        collection(db, "users"),
+        where("email", "==", email)
+      );
+      const emailSnapshot = await getDocs(emailQuery);
+      if (!emailSnapshot.empty) {
+        Alert.alert("Email address already exists");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log("Error checking email:", error);
+      return false;
     }
-    return false;
-  } catch (error) {
-    console.log("Error checking email:", error);
-    return false;
-  }
-};
+  };
+
+ 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign Up</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Roll Number"
-        value={rollNumber}
-        onChangeText={(text) => setRollNumber(text)}
-        
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={(text) => setName(text)}
-      />
       <TextInput
         style={styles.input}
         placeholder="Email Address"
@@ -192,4 +161,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default LabAssignment3;
