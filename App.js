@@ -1,4 +1,121 @@
-import { NavigationContainer  } from "@react-navigation/native";
+// import React, { useState } from "react";
+// import { View, Text, Button, FlatList, StyleSheet } from "react-native";
+
+// const App = () => {
+//   const [friends, setFriends] = useState([
+//     {
+//       id: 1,
+//       name: "Taimoor",
+//       age: 21,
+//       hobbies: [
+//         { text: "Gaming", id: 1 },
+//         { text: "Travelling", id: 2 },
+//       ],
+//     },
+//     {
+//       id: 2,
+//       name: "Raza",
+//       age: 18,
+//       hobbies: [
+//         { text: "Gaming", id: 3 },
+//         { text: "Hiking", id: 4 },
+//       ],
+//     },
+//     {
+//       id: 3,
+//       name: "Asif",
+//       age: 20,
+//       hobbies: [
+//         { text: "Swimming", id: 5 },
+//         { text: "Drawing", id: 6 },
+//       ],
+//     },
+//   ]);
+
+//   const handleAddFriend = () => {
+//     const newFriend = {
+//       id: friends.length + 1,
+//       name: "Taseer",
+//       age: 21,
+//       hobbies: [{ text: "New Friend's Hobby", id: friends.length + 1 }],
+//     };
+//     setFriends((prevFriends) => [...prevFriends, newFriend]);
+//   };
+
+//   const handleSecondFriend = () => {
+//     setFriends((prevFriends) =>
+//       prevFriends.map((friend) =>
+//         friend.id === 2 ? { ...friend, name: "Updated 2nd Friend" } : friend
+//       )
+//     );
+//   };
+
+//   const renderFriend = ({ item }) => (
+
+//     <View style={styles.friendContainer}>
+//       <Text style={styles.friendName}>Name: {item.name}</Text>
+//       <Text style={styles.friendAge}>Age: {item.age}</Text>
+//       <FlatList
+//         data={item.hobbies}
+//         keyExtractor={(hobby) => hobby.id.toString()}
+//         renderItem={({ item }) => (
+//           <Text style={styles.hobbyText}>hobby: {item.text}</Text>
+//         )}
+//       />
+//     </View>
+//   );
+
+//   return (
+//     <View style={styles.container}>
+//       <FlatList
+//         data={friends}
+//         keyExtractor={(item) => item.id.toString()}
+//         renderItem={renderFriend}
+//       />
+//       <Button title="Add Friend" onPress={handleAddFriend} color="#6200ea" />
+//       <Button
+//         title="Update Second Friend"
+//         onPress={handleSecondFriend}
+//         color="#03dac6"
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     marginTop: 60,
+//     flex: 1,
+//     padding: 20,
+//     backgroundColor: "#f0f0f0",
+//   },
+//   friendContainer: {
+//     marginBottom: 20,
+//     padding: 15,
+//     backgroundColor: "#ffffff",
+//     borderWidth: 1,
+//     borderColor: "#cccccc",
+//     borderRadius: 10,
+//   },
+//   friendName: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333333",
+//   },
+//   friendAge: {
+//     fontSize: 16,
+//     color: "#666666",
+//   },
+//   hobbyText: {
+//     marginLeft: 10,
+//     fontSize: 14,
+//     color: "#999999",
+//   },
+// });
+
+// export default App;
+
+  import { NavigationContainer  } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen"
 import ImageScreen from "./src/screens/ImageScreen"
@@ -24,6 +141,17 @@ import AddInfoScreen from "./src/screens/AddInfoScreen";
 import UserSearchScreen from "./src/screens/UserSearchScreen";
 import UserDetailsScreen from "./src/screens/UserDetailsScreen";
 import DeleteStudentScreen from "./src/screens/DeleteStudentScreen";
+import NextScreen from "./src/screens/NextScreen";
+import LabAssignment4 from "./src/screens/LabAssignment4";
+import SignInScreen from "./src/screens/SignInScreen";
+import classwork from "./src/screens/classwork";
+import signup from "./src/screens/signup";
+import FirstScreen from "./src/screens/FirstScreen";
+import MainScreen from "./src/screens/MainScreen";
+import AdditionalInfoScreen from "./src/screens/AdditionalInfoScreen";
+import FinalExam from "./src/screens/FinalExam";
+import HomeScreen1 from "./src/screens/HomeScreen1";
+
 
 const Stack=createNativeStackNavigator();
 
@@ -56,6 +184,18 @@ export default function App(){
                   <Stack.Screen name="UserSearchScreen" component={UserSearchScreen} />
                   <Stack.Screen name="UserDetailsScreen" component={UserDetailsScreen} />
                   <Stack.Screen name="DeleteStudentScreen" component={DeleteStudentScreen} />
+                  <Stack.Screen name="LabAssignment4" component={LabAssignment4} />
+                  <Stack.Screen name="NextScreen" component={NextScreen} />
+                  <Stack.Screen name="SignInScreen" component={SignInScreen} />
+                  <Stack.Screen name="classwork" component={classwork}/>
+                  <Stack.Screen name="classwork1" component={signup}/>
+                  <Stack.Screen name="FirstScreen" component={FirstScreen} />
+                  <Stack.Screen name ="MainScreen" component ={MainScreen}/>
+                  <Stack.Screen name ="AdditionalInfoScreen" component ={AdditionalInfoScreen}/>
+                  <Stack.Screen name ="FinalExam" component ={FinalExam}/>
+                  <Stack.Screen name ="HomeScreen1" component ={HomeScreen1}/>
+
+
                   
                   </Stack.Navigator>
                 </NavigationContainer>

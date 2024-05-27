@@ -55,8 +55,24 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.textStyle}>Search Student</Text>
       </TouchableOpacity>
 
-             <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('DeleteStudentScreen') }}>
+      <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('DeleteStudentScreen') }}>
         <Text style={styles.textStyle}>Delete Student</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('LabAssignment4') }}>
+        <Text style={styles.textStyle}>LabAssignment4</Text>
+      </TouchableOpacity>
+
+     <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('FirstScreen') }}>
+        <Text style={styles.textStyle}>Classwork</Text>
+      </TouchableOpacity>
+
+     <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('classwork1') }}>
+        <Text style={styles.textStyle}>Classwork1</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.viewStyle} onPress={() => { navigation.navigate('FinalExam') }}>
+        <Text style={styles.textStyle}>Final Exam</Text>
       </TouchableOpacity>
 
     </ScrollView>
