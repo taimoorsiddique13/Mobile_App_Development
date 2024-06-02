@@ -36,7 +36,7 @@ export default function HomeScreen1() {
      const citiesTemp = [];
      const API_KEY = "5b85388ae53b92e46291683ac01b16e7"; 
      const cityListResponse = await axios.get(
-       `https://api.openweathermap.org/data/2.5/find?lat=34&lon=0&cnt=50&appid=${API_KEY}&units=metric`
+       `https://api.openweathermap.org/data/2.5/find?lat=10&lon=0&cnt=50&appid=${API_KEY}&units=metric`
      );
 
      await Promise.all(

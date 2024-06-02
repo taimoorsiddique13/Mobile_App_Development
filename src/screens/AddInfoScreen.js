@@ -48,7 +48,7 @@ const AddInfoScreen = ({ navigation, route }) => {
     };
 
     fetchUserData();
-  }, [email]); // Runs once on component mount
+  }, [email]); 
 
   const handleAddInfo = async () => {
     if (!rollNumber || !age || !gender || !fullName) {
@@ -72,7 +72,6 @@ const AddInfoScreen = ({ navigation, route }) => {
         return;
       }
 
-      // If roll number is unique, update the user's information
       const userQuery = query(
         collection(db, "users"),
         where("email", "==", email)
